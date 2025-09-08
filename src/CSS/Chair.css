@@ -1,0 +1,228 @@
+/* src/CSS/Chair.css */
+
+/* Outer container for horizontal scrolling */
+.seating-area {
+    width: 100%;
+    min-width: 600px;
+    height: 600px; /* กำหนดความสูงของห้องให้คงที่ */
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    overflow-x: auto; /* ทำให้สามารถเลื่อนในแนวนอนได้ */
+    overflow-y: auto; /* ทำให้สามารถเลื่อนในแนวตั้งได้ */
+    border-radius: 8px;
+}
+
+/* Inner container that holds the chairs */
+.seating-grid {
+    position: relative; /* This is now the main container for chairs */
+    min-height: 600px;
+    border: 1px dashed #d1d1d1;
+}
+
+/* Individual chair item in the grid */
+.chair-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: grab;
+  user-select: none;
+  position: absolute;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  min-width: unset;
+  min-height: unset;
+  /* เพิ่มนี้ */
+  position: absolute;
+  /* สำหรับให้ .user-name-under ซ้อนทับ */
+}
+
+/* Style for the visual icon of the chair */
+.chair-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%; /* ทำให้เป็นวงกลม */
+  background-size: cover; /* ทำให้รูปภาพเต็มพื้นที่ */
+  background-position: center; /* จัดรูปภาพให้อยู่ตรงกลาง */
+  background-color: #f1f1f1;
+  border: 2px solid #e0e0e0;
+  margin-bottom: 0; /* ชิดกับชื่อ */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* ปรับชื่อให้ลอยทับขอบล่างของรูป */
+.user-name-under {
+  font-size: 15px;
+  color: #333;
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 4px 18px;
+  min-width: 90px;
+  max-width: 140px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border: 1.5px solid #e0e0e0;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* ปรับให้ลอยขึ้นไปบนรูป */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 52px; /* ประมาณ 80% ของรูป 64px */
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Add a visual effect when the chair is being dragged */
+.chair-item:active .chair-icon {
+    transform: scale(1.1);
+    cursor: grabbing;
+}
+
+/* Style for static chairs (non-editing mode) */
+.chair-static {
+    position: absolute;
+    cursor: default;
+    /* สไตล์อื่นๆ จะถูกใช้ร่วมกับ .chair-icon */
+}
+
+.chair {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 12px 10px 8px 10px;
+  margin: 8px;
+  min-width: 80px;
+  min-height: 110px;
+  transition: box-shadow 0.2s;
+}
+
+.chair-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 8px;
+  background: #f1f1f1;
+  border: 2px solid #e0e0e0;
+}
+
+.chair-name {
+  font-size: 15px;
+  color: #333;
+  margin-top: 0px;
+  text-align: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.5px 3px;
+  min-width: 60px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.user-name-under {
+  font-size: 15px;
+  color: #333;
+  margin-top: 0; /* ชิดกับรูป */
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1px 15px;
+  min-width: 90px;
+  max-width: 140px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  border: 1.5px solid #e0e0e0;
+  display: inline-block;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ถ้าไม่มีชื่อ ไม่ต้องแสดงกรอบชื่อ */
+.user-name-under:empty {
+  display: none;
+}
+
+/* --- Responsive Design for Chair Component --- */
+@media (max-width: 768px) {
+    .seating-area {
+        height: 500px; /* Reduce height on mobile */
+        min-width: 100%;
+    }
+    
+    .seating-grid {
+        min-height: 500px;
+    }
+    
+    .chair-icon {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .user-name-under {
+        font-size: 12px;
+        padding: 2px 12px;
+        min-width: 70px;
+        max-width: 100px;
+        top: 40px; /* Adjust position for smaller icon */
+    }
+    
+    .chair {
+        min-width: 60px;
+        min-height: 90px;
+        padding: 8px 6px 6px 6px;
+        margin: 6px;
+    }
+    
+    .chair-avatar {
+        width: 36px;
+        height: 36px;
+        margin-bottom: 6px;
+    }
+    
+    .chair-name {
+        font-size: 12px;
+        padding: 0.3px 2px;
+        min-width: 50px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .seating-area {
+        height: 550px;
+    }
+    
+    .seating-grid {
+        min-height: 550px;
+    }
+    
+    .chair-icon {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .user-name-under {
+        font-size: 13px;
+        padding: 3px 15px;
+        top: 46px;
+    }
+}
+
+@media (min-width: 1025px) {
+    .seating-area {
+        height: 600px;
+    }
+    
+    .seating-grid {
+        min-height: 600px;
+    }
+}

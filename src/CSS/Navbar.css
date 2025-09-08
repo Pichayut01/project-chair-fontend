@@ -1,0 +1,259 @@
+/* navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* Use viewport width to prevent stretching with content */
+  height: 60px;
+  background: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar__burger {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.navbar__burger:hover {
+  background-color: #eee;
+  border-radius: 5px;
+
+}
+
+/* ปรับขนาดโลโก้ */
+.navbar__logo-image {
+    height: 40px; /* ปรับขนาดความสูง */
+    width: auto; /* รักษาอัตราส่วน */
+}
+
+.navbar__profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100%;
+  background: #f7f7f7;
+  color: black;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  padding-top: 60px;
+  z-index: 998;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-list {
+  list-style-type: none;
+  padding: 10px;
+  margin: 10px 0;
+  /* เพิ่มคุณสมบัติสำหรับ scroll */
+  overflow-y: auto;
+  flex-grow: 1; /* ทำให้ list ขยายเต็มพื้นที่ที่เหลือ */
+}
+
+.sidebar-list-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 24px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 16px;
+    gap: 16px; 
+}
+
+.sidebar-list-item:hover {
+    background-color: #e8f0fe;
+    color: #65ad67;
+}
+
+/* ปรับสไตล์สำหรับปุ่ม Class โดยเฉพาะ */
+.sidebar-create-class {
+    font-weight: 500;
+    margin-bottom: 8px; 
+    color: #65ad67;
+}
+
+/* เส้นคั่น */
+
+/* รายการห้องเรียน */
+.sidebar-classroom-item {
+  
+    position: relative; 
+    padding-left: 24px; /* เพิ่มพื้นที่ด้านซ้ายเพื่อให้แถบสีดูสวยงาม */
+    overflow: hidden; /* ป้องกันเนื้อหาล้นเมื่อชื่อยาวเกินไป */
+}
+
+/* แถบสีด้านซ้ายของแต่ละรายการห้องเรียน */
+.classroom-color-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #65ad67; /* สีเริ่มต้น */
+}
+
+.sidebar-classroom-item.blue .classroom-color-bar { background-color: #4285f4; }
+.sidebar-classroom-item.green .classroom-color-bar { background-color: #34a853; }
+.sidebar-classroom-item.red .classroom-color-bar { background-color: #ea4335; }
+.sidebar-classroom-item.yellow .classroom-color-bar { background-color: #fbbc05; }
+
+.sidebar-profile-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.sidebar-classroom-name {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.sidebar-no-class-text {
+  font-size: 14px;
+  color: #5f6368;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.navbar-profile-image {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+
+.navbar-profile-image:hover {
+  box-shadow: 0 0 0 4px #e8f0fe; 
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px; /* Sidebar editing styles */
+  right: 10px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 250px;
+  z-index: 1000;
+  padding: 8px 0;
+}
+
+.dropdown-user-info {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  gap: 12px;
+}
+
+.dropdown-profile-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+}
+
+.dropdown-user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-user-name {
+  font-weight: 500;
+  font-size: 16px;
+  color: #3c4043;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-user-email {
+  font-size: 14px;
+  color: #5f6368;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  gap: 16px;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f3f4;
+}
+
+.leave-seat-btn {
+  transition: background 0.2s;
+}
+.leave-seat-btn:hover {
+  background: #d32f2f;
+}
+
+.kick-btn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background 0.2s;
+}
+.kick-btn:hover {
+    background: #c0392b;
+}
+
+.member-list-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 4px 0;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.2em;
+    margin-left: 8px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.2s, color 0.2s;
+    padding: 4px;
+}
+
+.menu-btn:hover {
+    background: #f0f0f0;
+    color: #007bff;
+}
