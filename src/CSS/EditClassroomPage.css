@@ -168,7 +168,7 @@
 }
 
 .edit-section {
-    max-width: 800px;
+    max-width: 100;
 }
 
 .section-title {
@@ -183,7 +183,7 @@
 }
 
 .section-icon {
-    color: #007bff;
+    color: #82c088;
 }
 
 .form-group {
